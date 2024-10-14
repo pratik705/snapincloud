@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: product-page-selfsigned
+  namespace: demo-app
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: productpage.example.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: productpage
+            port:
+              number: 9080
+        path: /
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - productpage.example.com
+    secretName: productpage.example.com

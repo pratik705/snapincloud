@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: product-page-route53-1
+  namespace: demo-app
+  annotations:
+    cert-manager.io/cluster-issuer: route53
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: productpage1.pbandark.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: productpage
+            port:
+              number: 9080
+        path: /
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - productpage1.pbandark.com
+    secretName: productpage1.pbandark.com

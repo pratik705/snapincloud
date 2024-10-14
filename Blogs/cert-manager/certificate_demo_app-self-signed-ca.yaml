@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: productpage-self-signed-ca
+  namespace: demo-app
+spec:
+  commonName: productpage123.example.com
+  secretName: productpage123.example.com
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  issuerRef:
+    name: my-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
