@@ -1,0 +1,6 @@
+---
+namespace: sealed-secrets
+resources:
+  - "namespace.yaml"
+  - "source.yaml"
+  - "helmrelease.yaml"
