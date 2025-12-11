@@ -1,0 +1,14 @@
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: snapincloud-cluster
+servers: 1
+agents: 3
+image: docker.io/rancher/k3s:v1.34.2-k3s1
+subnet: "172.28.0.0/16"
+options:
+  k3s:
+    extraArgs:
+      - arg: "--disable=traefik"
+        nodeFilters:
+          - server:*
