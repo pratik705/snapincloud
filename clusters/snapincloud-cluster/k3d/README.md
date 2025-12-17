@@ -3,6 +3,7 @@
 `config.yaml` defines the local k3d cluster. After starting the cluster, verify connectivity:
 
 ```bash
+k3d cluster create -c ./config.yaml --agents-memory=3G --servers-memory=4G
 kubectl get node
 ```
 
